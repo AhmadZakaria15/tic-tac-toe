@@ -5,7 +5,7 @@ using namespace std;
 void Design(char *spaces);
 void Player(char *spaces , char player);
 void Computer(char *spaces , char computer);
-bool check();
+bool check(char *spaces , char player, char computer );
 
 
 int main(){
@@ -13,16 +13,18 @@ int main(){
     char player = 'X';
     char computer = 'O';
     bool run = true;
+    
 
     while (run){
         
         Design(spaces);
         Player(spaces ,player);
         Computer(spaces ,computer );
-
-    // if (check()){
-    //     run = false;
-    //     break;}
+        if(check(spaces, player, computer)){
+            run = false;
+            break;
+        }
+   
     }
 
     Design(spaces);
@@ -76,7 +78,38 @@ void Computer(char *spaces ,char computer){
     }
 }
 
-// bool check(char *spaces ,char player ,char computer){}
+bool check(char *spaces ,char player ,char computer){
+
+ if((spaces[0] != ' ') && (spaces[0] == spaces[1]) && (spaces[1] == spaces[2])){
+        spaces[0] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[3] != ' ') && (spaces[3] == spaces[4]) && (spaces[4] == spaces[5])){
+        spaces[3] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[6] != ' ') && (spaces[6] == spaces[7]) && (spaces[7] == spaces[8])){
+        spaces[6] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[0] != ' ') && (spaces[0] == spaces[3]) && (spaces[3] == spaces[6])){
+        spaces[0] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[1] != ' ') && (spaces[1] == spaces[4]) && (spaces[4] == spaces[7])){
+        spaces[1] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[2] != ' ') && (spaces[2] == spaces[5]) && (spaces[5] == spaces[8])){
+        spaces[2] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[0] != ' ') && (spaces[0] == spaces[4]) && (spaces[4] == spaces[8])){
+        spaces[0] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else if((spaces[2] != ' ') && (spaces[2] == spaces[4]) && (spaces[4] == spaces[6])){
+        spaces[2] == player ? cout << "YOU WIN!\n" : cout << "YOU LOSE!\n";
+    }
+    else{
+        return false;
+    }
+
+    return true;
+}
 
    
     
