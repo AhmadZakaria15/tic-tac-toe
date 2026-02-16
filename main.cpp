@@ -6,6 +6,7 @@ void Design(char *spaces);
 void Player(char *spaces , char player);
 void Computer(char *spaces , char computer);
 bool check(char *spaces , char player, char computer );
+bool checktie(char *spaces );
 
 
 int main(){
@@ -24,7 +25,10 @@ int main(){
             run = false;
             break;
         }
-   
+        if(checktie(spaces)){
+            run = false;
+            break;
+        }
     }
 
     Design(spaces);
@@ -107,10 +111,19 @@ bool check(char *spaces ,char player ,char computer){
     else{
         return false;
     }
-
+    
     return true;
 }
 
+bool checktie(char *spaces) {
+    
+    for (int i = 0; i < 9; i++) {
+        if (spaces[i] == ' ') {
+            return false;  
+        }
+    }
+    return true;  
+}
    
     
    
